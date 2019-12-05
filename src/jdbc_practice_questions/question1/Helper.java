@@ -10,8 +10,7 @@ public class Helper {
         boolean isCreated=false;
         try {
             Statement statement = connection.createStatement();
-            statement.executeQuery("CREATE TABLE courses(courseID int,courseName varchar(50),courseCode varchar(20)," +
-                    "courseDuration int,courseCost double);");
+            statement.executeUpdate("CREATE TABLE courses(courseID int,courseName varchar(50),courseCode varchar(20),courseDuration int,courseCost double);");
             isCreated=true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -22,9 +21,9 @@ public class Helper {
         boolean isInserted=false;
         try {
             Statement statement = connection.createStatement();
-            statement.executeQuery("INSERT INTO courses(courseID,courseName,courseCode,courseDuration,courseCost)" +
+            statement.executeUpdate("INSERT INTO courses(courseID,courseName,courseCode,courseDuration,courseCost)" +
                     " VALUES (1,'Object-Oriented Programmiing','BCSC0002',4,9562.50);");
-            statement.executeQuery("INSERT INTO courses(courseID,courseName,courseCode,courseDuration,courseCost)" +
+            statement.executeUpdate("INSERT INTO courses(courseID,courseName,courseCode,courseDuration,courseCost)" +
                     " VALUES (2,'Object-Oriented Programmiing','BCSC0801',4,9562.50);");
             isInserted=true;
         } catch (SQLException e) {
