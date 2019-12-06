@@ -16,11 +16,11 @@ public class Helper {
         return isExist;
     }
     public boolean updateColumn(Connection connection,String columnName,String courseValue) {
-        boolean isUpdated;
-        isUpdated=false;
+        boolean isUpdated=false;
+        String query= "UPDATE courses SET "+columnName +"= ?;";
         try{
-            PreparedStatement preparedStatement= connection.prepareStatement("UPDATE courses SET courseName = ?;");
-//            preparedStatement.setString(1,columnName);
+            PreparedStatement preparedStatement= connection.prepareStatement(query);
+
             preparedStatement.setString(1,courseValue);
             preparedStatement.executeUpdate();
             isUpdated=true;
