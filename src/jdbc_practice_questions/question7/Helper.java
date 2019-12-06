@@ -3,25 +3,25 @@ package jdbc_practice_questions.question7;
 import java.sql.*;
 
 public class Helper {
-    public boolean courseExist(Connection connection,String cName){
-        boolean isExist;
+    public boolean courseExist(Connection connection,String columnName){
+        boolean isExist=false;
         try{
             PreparedStatement preparedStatement= connection.prepareStatement("SELECT ? FROM courses;");
-            preparedStatement.setString(1,cName);
-            preparedStatement.executeUpdate();
+            preparedStatement.setString(1,columnName);
+            preparedStatement.executeQuery();
             isExist=true;
         } catch (SQLException e) {
-            isExist=false;
+            e.printStackTrace();
         }
         return isExist;
     }
-    public boolean updateColumn(Connection connection,String columnName,String courseName) {
+    public boolean updateColumn(Connection connection,String columnName,String courseValue) {
         boolean isUpdated;
         isUpdated=false;
         try{
-            PreparedStatement preparedStatement= connection.prepareStatement("SELECT ? FROM courses WHERE courseName=?;");
-            preparedStatement.setString(1,columnName);
-            preparedStatement.setString(2,courseName);
+            PreparedStatement preparedStatement= connection.prepareStatement("UPDATE courses SET courseName = ?;");
+//            preparedStatement.setString(1,columnName);
+            preparedStatement.setString(1,courseValue);
             preparedStatement.executeUpdate();
             isUpdated=true;
         } catch (SQLException e) {
