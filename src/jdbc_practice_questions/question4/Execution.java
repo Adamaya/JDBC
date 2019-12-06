@@ -9,20 +9,20 @@ public class Execution {
         Helper helper = new Helper();
         if (jdbcConnection.attemptConnection()) {
             System.out.println("Connection Established!");
-            ResultSet allDetails=helper.fetchSelectedData(jdbcConnection.getConnection(),"Object-Oriented Programmiing");
-            while (true){
-                try{
-                    if(!allDetails.next()){
+            ResultSet allDetails = helper.fetchSelectedData(jdbcConnection.getConnection(), "Object-Oriented Programmiing");
+            while (true) {
+                try {
+                    if (!allDetails.next()) {
                         break;
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                try{
-                    System.out.println("courseId: "+allDetails.getString("courseId")+" courseName: "
-                            +allDetails.getString("courseName")+" courseCode: " +allDetails.getString("courseCode")+" courseDuration: "
-                            +allDetails.getString("courseDuration")+" courseCost: "
-                            +allDetails.getString("courseCost"));
+                try {
+                    System.out.println("courseId: " + allDetails.getString("courseId") + " courseName: "
+                            + allDetails.getString("courseName") + " courseCode: " + allDetails.getString("courseCode") + " courseDuration: "
+                            + allDetails.getString("courseDuration") + " courseCost: "
+                            + allDetails.getString("courseCost"));
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
